@@ -1,0 +1,1 @@
+cmd_/home/s/l5/procfs_rw/procfs_rw.ko := ld -r -m elf_i386 -T /home/s/try/linux-4.13/scripts/module-common.lds --build-id  -o /home/s/l5/procfs_rw/procfs_rw.ko /home/s/l5/procfs_rw/procfs_rw.o /home/s/l5/procfs_rw/procfs_rw.mod.o ;  true
