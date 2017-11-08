@@ -1,0 +1,1 @@
+cmd_/home/s/BB2/6050proc/6050p.ko := arm-linux-gnueabihf-ld -EL -r  -T ./scripts/module-common.lds --build-id  -T ./arch/arm/kernel/module.lds -o /home/s/BB2/6050proc/6050p.ko /home/s/BB2/6050proc/6050p.o /home/s/BB2/6050proc/6050p.mod.o ;  true

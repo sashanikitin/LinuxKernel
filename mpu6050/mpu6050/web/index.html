@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html ng-app="verbs">
+    <head>
+        <meta charset="utf-8">
+        <title>MPU6050</title>
+        <link href="css/app.css" rel="stylesheet" type="text/css"/>
+        <link href="css/signin.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+    <body>
+<div class="container">
+
+    <div class="form-signin" >
+        <h2 class="form-signin-heading">MPU6050</h2>
+
+        <div class="input-group">
+            <span class="input-group-addon">Temperature</span>
+            <input type="number" class="form-control" id = "temp" >
+        </div>
+        <br>
+        
+		<div class="input-group">           
+            <span class="input-group-addon">Accel_X</span>
+			<input type="number" class="form-control" id = "ax" >
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon"> Accel_Y</span>
+            <input type="number" class="form-control" id = "ay" >
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">Accel_Z</span>
+            <input type="number" class="form-control" id = "az">
+            
+        </div>
+        <br>
+
+		<div class="input-group">
+		    <input type="number" class="form-control" id = "gx" >
+            <span class="input-group-addon">GYRO_X</span>
+            
+            
+        </div>
+        <br>
+		
+		<div class="input-group">
+
+            <input type="number" class="form-control" id = "gy">
+            <span class="input-group-addon">GERO_Y</span>
+        </div>
+        <br>
+		
+		<div class="input-group">
+
+            <input type="number" class="form-control" id = "gz" >
+            <span class="input-group-addon">GYRO_Z</span>
+        </div>
+        <br>       
+        
+    </div>
+
+</div> <!-- /container -->
+     
+<script>
+
+
+
+    function loadPhones() {
+      var xhr = new XMLHttpRequest();
+
+      xhr.open('GET', 'mpu6050',true);
+      xhr.send();
+
+	   xhr.onreadystatechange = function() {
+        if (xhr.readyState != 4) return;
+
+        if (xhr.status != 200) {
+          // обработать ошибку
+          console.log('Ошибка ' + xhr.status + ': ' + xhr.statusText);
+          return;
+        }
+
+        // обработать результат
+        var str=xhr.responseText;
+        
+        var t= str.substring(1,str.length-3);
+       
+       t=t.replace(/\\/g,"");
+      // console.log(t); 
+       var answer = JSON.parse(t);
+       //console.log(answer);
+		for(var i in answer){
+        var elem = document.getElementById(i);
+		elem.value = answer[i];
+		      }
+      }
+	  
+	 
+    }
+	
+	
+	setInterval(loadPhones, 200);
+  </script>
+
+
+      
+        
+    </body>
+</html>
+
+<!-- http://localhost:8080/#/home -->
+<!-- http://18.0.0.49:8080/#/home  at work-->
