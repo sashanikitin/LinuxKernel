@@ -15,21 +15,7 @@
 #define LEN_MSG 160
 static char buf_msg[ LEN_MSG + 1 ] = "Hello from module!\n";
 
-/* <linux/device.h>
-LINUX_VERSION_CODE > KERNEL_VERSION(2,6,32)
-struct class_attribute {
-   struct attribute attr;
-   ssize_t (*show)(struct class *class, struct class_attribute *attr, char *buf);
-   ssize_t (*store)(struct class *class, struct class_attribute *attr,
-                    const char *buf, size_t count);
-};
-LINUX_VERSION_CODE <= KERNEL_VERSION(2,6,32)
-struct class_attribute {
-   struct attribute attr;
-   ssize_t (*show)(struct class *class, char *buf);
-   ssize_t (*store)(struct class *class, const char *buf, size_t count);
-};
-*/
+
 
 /* sysfs show() method. Calls the show() method corresponding to the individual sysfs file */
 #if LINUX_VERSION_CODE > KERNEL_VERSION(2,6,32)
