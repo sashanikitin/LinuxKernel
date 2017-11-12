@@ -113,9 +113,7 @@ static struct i2c_driver mpu6050_i2c_driver = {
 
 static ssize_t all_show(struct class *class, struct class_attribute *attr, char *buf)
 {
-	mpu6050_read_data();
-
-	
+	mpu6050_read_data();	
 	sprintf(buf, "{\"temp\": \"%d\",\"ax\": \"%d\",\"ay\": \"%d\",\"az\": \"%d\",\"gx\": \"%d\",\"gy\": \"%d\",\"gz\": \"%d\"}\n",
 	 g_mpu6050_data.temperature,g_mpu6050_data.accel_values[0],g_mpu6050_data.accel_values[1],g_mpu6050_data.accel_values[2],
 	 g_mpu6050_data.gyro_values[0],g_mpu6050_data.gyro_values[1],g_mpu6050_data.gyro_values[2]);
